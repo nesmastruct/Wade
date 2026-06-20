@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>شيك ليست الصحة اليومية</title>
+  <style>
+    :root{
+      --brown:#5a2b08; --cream:#fbf3df; --card:#fffaf0; --line:#decaa2;
+      --gold:#caa468; --green:#2e8b57; --text:#4a321c;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(#fff8e8,#f7e7c9);color:var(--text)}
+    .wrap{max-width:520px;margin:auto;padding:18px}
+    .hero{background:var(--brown);color:white;border-radius:28px;padding:22px 18px;text-align:center;box-shadow:0 8px 18px #0002}
+    .hero h1{margin:0;font-size:24px}
+    .hero p{margin:8px 0 0;color:#f1dcc0;font-size:13px}
+    .tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:18px 0}
+    .tab{border:1px solid var(--line);background:#fff7e8;border-radius:16px;padding:10px 4px;text-align:center;font-size:12px}
+    .tab.active{background:var(--brown);color:white}
+    .score{background:#fff7e8;border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:18px}
+    .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .percent{font-size:34px;font-weight:800;color:var(--brown)}
+    .bar{height:14px;background:#ead9b7;border-radius:99px;overflow:hidden;margin-top:12px}
+    .fill{height:100%;width:0%;background:linear-gradient(90deg,#8bbf6a,#2e8b57);border-radius:99px;transition:.3s}
+    section{margin:24px 0}
+    h2{font-size:17px;color:#b4874f;margin:0 0 12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+    .item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;margin:9px 0;box-shadow:0 2px 8px #0000000d}
+    input{width:24px;height:24px;accent-color:var(--green);flex:0 0 auto}
+    .item b{display:block;font-size:15px}
+    .item span{display:block;font-size:12px;color:#8b7255;margin-top:4px}
+    .done{opacity:.65}
+    .done b{text-decoration:line-through}
+    .buttons{display:flex;gap:10px;margin-top:18px}
+    button{flex:1;border:0;border-radius:16px;padding:13px;background:var(--brown);color:white;font-weight:bold;font-size:14px}
+    button.secondary{background:#fff7e8;color:var(--brown);border:1px solid var(--line)}
+    .footer{text-align:center;font-size:12px;color:#8b7255;margin:20px 0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>🌿 شيك ليست الصحة اليومية</h1>
+      <p>تابعي مهامك اليومية وخدي 100% عند إكمال كل المهام</p>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active">TDCE</div>
+      <div class="tab">تقسيم الوجبات</div>
+      <div class="tab">الماء</div>
+      <div class="tab">رياضة</div>
+      <div class="tab">النوم</div>
+    </div>
+
+    <div class="score">
+      <div class="row">
+        <strong id="count">0/16 إنجازك اليوم</strong>
+        <div class="percent" id="percent">0%</div>
+      </div>
+      <div class="bar"><div class="fill" id="fill"></div></div>
+    </div>
+
+    <section>
+      <h2>💧 الماء والمشروبات</h2>
+      <label class="item"><input type="checkbox"><div><b>ماء 8 أكواب على الأقل</b><span>اشربي الماء بانتظام طوال اليوم</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>كوبين ماء قبل كل وجبة</b><span>يساعد على الشبع وتحسين الهضم</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>تقليل سكر المشروبات</b><span>تجنبي العصائر والمشروبات المحلاة</span></div></label>
+    </section>
+
+    <section>
+      <h2>🥗 التغذية والوجبات</h2>
+      <label class="item"><input type="checkbox"><div><b>طبق سلطة كبير متعدد الألوان</b><span>مليان خضار طازج ومفيد</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>بروتين في كل وجبة</b><span>دجاج، بيض، لحم، سمك أو بقوليات</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>كربوهيدرات صحية</b><span>بطاطا، شوفان، أرز بني أو عيش حبوب كاملة</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>دهون صحية</b><span>زيت زيتون، أفوكادو، مكسرات</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>فيتامينات: فواكه وخضروات</b><span>احرصي على تنوع الألوان والأصناف</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>كلّي ببطء ومضغ جيد</b><span>لا تأكلي بسرعة</span></div></label>
+    </section>
+
+    <section>
+      <h2>💊 المكملات الغذائية</h2>
+      <label class="item"><input type="checkbox"><div><b>تناول مكملاتك الغذائية اليوم</b><span>فيتامين د، أوميجا 3، أو حسب وصف طبيبك</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>بذور الشيا أو الكتان</b><span>يوم شيا، يوم كتان مطحونة</span></div></label>
+    </section>
+
+    <section>
+      <h2>🏃‍♀️ الرياضة والحركة</h2>
+      <label class="item"><input type="checkbox"><div><b>30 دقيقة حركة على الأقل</b><span>مشي، رياضة أو تمارين في البيت</span></div></label>
+    </section>
+
+    <section>
+      <h2>😴 النوم والتوتر</h2>
+      <label class="item"><input type="checkbox"><div><b>نوم 7-8 ساعات جودة النوم الجيد</b><span>نامي في وقت منتظم وابتعدي عن الشاشات</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>إدارة التوتر اليومي</b><span>تنفس، تأمل، أو أي نشاط مريح</span></div></label>
+    </section>
+
+    <section>
+      <h2>✨ عادات إضافية</h2>
+      <label class="item"><input type="checkbox"><div><b>عدم أكل سكريات/حلويات اليوم</b><span>اختاري بديل صحي عند الحاجة</span></div></label>
+      <label class="item"><input type="checkbox"><div><b>تسجيل ملاحظات اليوم</b><span>اكتبي إحساسك ونشاطك</span></div></label>
+    </section>
+
+    <div class="buttons">
+      <button onclick="resetToday()" class="secondary">إعادة تعيين اليوم</button>
+      <button onclick="sharePage()">مشاركة</button>
+    </div>
+
+    <div class="footer">الحالة محفوظة تلقائيًا على نفس الجهاز</div>
+  </div>
+
+<script>
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+const items=[...document.querySelectorAll('.item')];
+const key='daily-health-checklist-v1';
+
+function load(){
+  const saved=JSON.parse(localStorage.getItem(key)||'[]');
+  boxes.forEach((b,i)=>b.checked=!!saved[i]);
+  update();
+}
+function save(){
+  localStorage.setItem(key,JSON.stringify(boxes.map(b=>b.checked)));
+}
+function update(){
+  const done=boxes.filter(b=>b.checked).length;
+  const total=boxes.length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('count').textContent=`${done}/${total} إنجازك اليوم`;
+  document.getElementById('percent').textContent=pct+'%';
+  document.getElementById('fill').style.width=pct+'%';
+  items.forEach((it,i)=>it.classList.toggle('done',boxes[i].checked));
+  save();
+}
+function resetToday(){
+  boxes.forEach(b=>b.checked=false);
+  update();
+}
+function sharePage(){
+  if(navigator.share){navigator.share({title:document.title,url:location.href});}
+  else {navigator.clipboard.writeText(location.href); alert('تم نسخ الرابط');}
+}
+boxes.forEach(b=>b.addEventListener('change',update));
+load();
+</script>
+</body>
+</html>
