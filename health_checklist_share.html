@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>شيك ليست الصحة اليومية</title>
+<style>
+:root{--dark:#4b2308;--brown:#6b340d;--cream:#fff8ec;--line:#ead7b8;--green:#3f8f63;--muted:#8a7158}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(#fff8ec,#efd7ae);color:var(--dark)}
+.app{max-width:460px;margin:auto;min-height:100vh;padding:16px}
+.hero{background:linear-gradient(145deg,#7b3b11,#3e1b06);color:white;border-radius:30px;padding:25px 18px;text-align:center;box-shadow:0 15px 30px #0002}
+.hero h1{margin:0;font-size:28px;line-height:1.4}
+.hero p{margin:8px 0 0;color:#f4dfbf}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:25px;padding:18px;margin:16px 0;box-shadow:0 10px 25px #0001}
+.score{display:flex;gap:16px;align-items:center}
+.circle{width:115px;height:115px;border-radius:50%;background:conic-gradient(var(--green) 0deg,#ead9ba 0deg);display:grid;place-items:center;flex:0 0 auto}
+.inner{width:86px;height:86px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:29px;font-weight:bold;color:var(--brown)}
+.bar{height:14px;background:#ead9ba;border-radius:20px;overflow:hidden;margin-top:14px}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#8bc47a,#2d8a59);transition:.3s}
+.count{font-weight:bold;font-size:18px}
+.msg{font-size:13px;color:var(--muted);line-height:1.7;margin-top:5px}
+h2{font-size:17px;color:var(--brown);margin:20px 4px 10px}
+.task{background:#fffaf0;border:1px solid var(--line);border-radius:18px;padding:12px;margin:9px 0;display:flex;gap:12px;align-items:center;box-shadow:0 5px 14px #0000000d}
+.task input{width:25px;height:25px;accent-color:var(--green);flex:0 0 auto}
+.task b{display:block;font-size:15px}
+.task span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.task.done{opacity:.65}.task.done b{text-decoration:line-through}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+button{border:0;border-radius:16px;padding:13px;font-weight:bold;font-size:14px}
+.reset{background:#fff7e8;color:var(--brown);border:1px solid var(--line)}
+.share{background:var(--brown);color:white}
+.doneMsg{display:none;text-align:center;background:#e8f5e9;color:#23633f;border:1px solid #b9dfc2;border-radius:18px;padding:12px;margin-top:12px;font-weight:bold}
+footer{text-align:center;color:#9a8064;font-size:12px;margin:18px 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="hero">
+    <h1>🌿 شيك ليست<br>الصحة اليومية</h1>
+    <p>كمّلي المهام وخدي تقييمك من 100%</p>
+  </div>
+
+  <div class="card">
+    <div class="score">
+      <div class="circle" id="circle"><div class="inner" id="percent">0%</div></div>
+      <div>
+        <div class="count" id="count">0 من 16 مهمة</div>
+        <div class="msg" id="msg">ابدئي بأول مهمة بسيطة… كل خطوة بتفرق.</div>
+        <div class="bar"><div class="fill" id="fill"></div></div>
+      </div>
+    </div>
+    <div class="doneMsg" id="doneMsg">🎉 ممتاز! خلصتي كل مهام اليوم</div>
+  </div>
+
+  <h2>💧 الماء والمشروبات</h2>
+  <label class="task"><input type="checkbox"><div><b>شرب 8 أكواب ماء</b><span>على مدار اليوم</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>كوبين ماء قبل كل وجبة</b><span>قبل الوجبات الرئيسية</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>تقليل السكر في المشروبات</b><span>بدون عصائر أو مشروبات محلاة</span></div></label>
+
+  <h2>🥗 التغذية والوجبات</h2>
+  <label class="task"><input type="checkbox"><div><b>طبق سلطة كبير متعدد الألوان</b><span>خضار طازج ومتنوع</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>بروتين في كل وجبة</b><span>بيض، دجاج، سمك، لحم أو بقوليات</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>كربوهيدرات صحية</b><span>شوفان، بطاطا، أرز أو عيش حبوب كاملة</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>دهون صحية</b><span>زيت زيتون، مكسرات أو أفوكادو</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>فواكه وخضروات</b><span>تنويع الألوان خلال اليوم</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>الأكل ببطء</b><span>مضغ جيد وبدون استعجال</span></div></label>
+
+  <h2>💊 المكملات والعادات</h2>
+  <label class="task"><input type="checkbox"><div><b>تناول المكملات الغذائية</b><span>حسب النظام أو وصف الطبيب</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>بذور الشيا أو الكتان</b><span>إضافة بسيطة ومفيدة</span></div></label>
+
+  <h2>🏃‍♀️ الرياضة والحركة</h2>
+  <label class="task"><input type="checkbox"><div><b>30 دقيقة نشاط بدني</b><span>مشي أو تمرين خفيف</span></div></label>
+
+  <h2>😴 النوم والتوتر</h2>
+  <label class="task"><input type="checkbox"><div><b>نوم 7-8 ساعات</b><span>جودة نوم أفضل</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>إدارة التوتر</b><span>تنفس، هدوء أو تأمل</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>عدم تناول الحلويات</b><span>اختيار بديل صحي</span></div></label>
+  <label class="task"><input type="checkbox"><div><b>تسجيل ملاحظات اليوم</b><span>اكتبي إحساسك ونشاطك</span></div></label>
+
+  <div class="actions">
+    <button class="reset" onclick="resetAll()">إعادة اليوم</button>
+    <button class="share" onclick="sharePage()">مشاركة</button>
+  </div>
+  <footer>يتم حفظ التقدم تلقائيًا على نفس الجهاز</footer>
+</div>
+
+<script>
+const boxes=[...document.querySelectorAll('input[type=checkbox]')];
+const tasks=[...document.querySelectorAll('.task')];
+const key='health-checklist-share-file-v1';
+function update(){
+  const done=boxes.filter(b=>b.checked).length,total=boxes.length,p=Math.round(done/total*100);
+  percent.textContent=p+'%'; count.textContent=done+' من '+total+' مهمة';
+  fill.style.width=p+'%'; circle.style.background='conic-gradient(var(--green) '+(p*3.6)+'deg,#ead9ba 0deg)';
+  msg.textContent=p===100?'رائعة! يوم صحي مكتمل 100%.':p>=75?'قريبة جدًا من الهدف… آخر دفعة.':p>=50?'وصلتي للنص… أداء جميل جدًا.':p>=25?'بداية ممتازة! كمّلي بنفس الهدوء.':'ابدئي بأول مهمة بسيطة… كل خطوة بتفرق.';
+  doneMsg.style.display=p===100?'block':'none';
+  tasks.forEach((t,i)=>t.classList.toggle('done',boxes[i].checked));
+  localStorage.setItem(key,JSON.stringify(boxes.map(b=>b.checked)));
+}
+function load(){const s=JSON.parse(localStorage.getItem(key)||'[]');boxes.forEach((b,i)=>b.checked=!!s[i]);update();}
+function resetAll(){boxes.forEach(b=>b.checked=false);update();}
+function sharePage(){if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href);alert('تم نسخ الرابط')}}
+boxes.forEach(b=>b.addEventListener('change',update));load();
+</script>
+</body>
+</html>
